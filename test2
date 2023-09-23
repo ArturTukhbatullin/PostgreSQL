@@ -1,0 +1,16 @@
+-- Database: data2
+
+DROP DATABASE IF EXISTS data2;
+
+
+CREATE TABLE data2 (
+user_id serial PRIMARY KEY,
+username VARCHAR ( 50 ) UNIQUE NOT NULL,
+password VARCHAR ( 50 ) NOT NULL,
+email VARCHAR ( 255 ) UNIQUE NOT NULL
+);
+
+insert into data2 values
+(1, 'Daniel', '1234', 'daniel@gmail.com');
+
+select * from data2

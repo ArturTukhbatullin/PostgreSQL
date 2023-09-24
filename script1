@@ -1,0 +1,12 @@
+-- select * from scheme1.kaggle_titanic_test ktt
+-- left join scheme1.kaggle_titanic_gs ktgs on ktt.passengerid=ktgs.passengerid
+
+
+select kttn.* from scheme1.kaggle_titanic_train kttn
+union (select ktt.PassengerId,	Survived,	Pclass,	Name,	Sex,	Age,	SibSp,	Parch,	Ticket,	Fare,	Cabin,	Embarked from scheme1.kaggle_titanic_test ktt
+left join scheme1.kaggle_titanic_gs ktgs on ktt.passengerid=ktgs.passengerid)
+order by passengerid
+
+
+
+-- select PassengerId,	Survived,	Pclass,	Name,	Sex,	Age,	SibSp,	Parch,	Ticket,	Fare,	Cabin,	Embarked from scheme1.kaggle_titanic_train kttn

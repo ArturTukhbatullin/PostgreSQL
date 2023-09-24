@@ -1,0 +1,67 @@
+--==============train==============
+DROP TABLE IF EXISTS scheme1.kaggle_titanic_train;
+
+
+CREATE TABLE IF NOT EXISTS scheme1.kaggle_titanic_train
+(
+	PassengerId SERIAL PRIMARY KEY,
+	Survived  boolean,
+	Pclass smallint,
+	Name text,
+	Sex text,
+	Age numeric,
+	SibSp smallint,
+	Parch smallint,
+	Ticket text,
+	Fare numeric,
+	Cabin text,
+	Embarked text
+);
+
+copy scheme1.kaggle_titanic_train
+FROM '/tmp/Kaggle_titanic/train.csv'
+DELIMITER ','
+CSV HEADER;
+
+select * from scheme1.kaggle_titanic_train;
+
+--==============test==============
+DROP TABLE IF EXISTS scheme1.kaggle_titanic_test;
+
+CREATE TABLE IF NOT EXISTS scheme1.kaggle_titanic_test
+(
+	PassengerId SERIAL PRIMARY KEY,
+	Pclass smallint,
+	Name text,
+	Sex text,
+	Age numeric,
+	SibSp smallint,
+	Parch smallint,
+	Ticket text,
+	Fare numeric,
+	Cabin text,
+	Embarked text
+);
+
+copy scheme1.kaggle_titanic_test
+FROM '/tmp/Kaggle_titanic/test.csv'
+DELIMITER ','
+CSV HEADER;
+
+select * from scheme1.kaggle_titanic_test;
+
+--==============gender_submission=====
+DROP TABLE IF EXISTS scheme1.kaggle_titanic_gs;
+
+CREATE TABLE IF NOT EXISTS scheme1.kaggle_titanic_gs
+(
+	PassengerId SERIAL PRIMARY KEY,
+	Survived  boolean
+);
+
+copy scheme1.kaggle_titanic_gs
+FROM '/tmp/Kaggle_titanic/gender_submission.csv'
+DELIMITER ','
+CSV HEADER;
+
+select * from scheme1.kaggle_titanic_gs;
